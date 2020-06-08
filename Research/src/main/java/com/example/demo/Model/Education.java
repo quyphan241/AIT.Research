@@ -10,6 +10,7 @@ public class Education {
     private String school;
     private String position;
     private String period;
+    private String description;
     private boolean isDeleted=false;
 
 
@@ -51,5 +52,13 @@ public class Education {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
