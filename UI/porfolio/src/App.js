@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import Profile from './components/Profile'
-import Header from './components/Header'
-import About from './components/About'
-import Skill from './components/Skill'
-import Experience from './components/Experience'
-import Education from './components/Education'
-import Reference from './components/Reference'
-import Footer from './components/Footer'
+import Profile from './components/Index/Profile'
+import Header from './components/Index/Header'
+import About from './components/Index/About'
+import Skill from './components/Index/Skill'
+import Experience from './components/Index/Experience'
+import Education from './components/Index/Education'
+import Reference from './components/Index/Reference'
+import Footer from './components/Index/Footer'
 
 
 class App extends Component {

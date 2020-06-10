@@ -8,7 +8,8 @@ public class Education {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String school;
-    private String position;
+    private String major;
+    private String degree;
     private String period;
     private String description;
     private boolean isDeleted=false;
@@ -30,12 +31,12 @@ public class Education {
         this.school = school;
     }
 
-    public String getPosition() {
-        return position;
+    public String getMajor() {
+        return major;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setMajor(String major) {
+        this.major = major;
     }
 
     public String getPeriod() {
@@ -60,5 +61,13 @@ public class Education {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDegree() {
+        return degree;
+    }
+
+    public void setDegree(String degree) {
+        this.degree = degree;
     }
 }

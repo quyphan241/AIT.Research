@@ -10,6 +10,8 @@ public class WorkExperience {
     private Long id;
     private String position;
     private String period;
+    private String description;
+    private String company;
     private boolean isDeleted=false;
 
     public Long getId() {
@@ -42,5 +44,21 @@ public class WorkExperience {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
     }
 }

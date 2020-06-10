@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = {("*")})
 @RestController
 public class InformationeRestController {
 
@@ -35,6 +36,8 @@ public class InformationeRestController {
         Optional<Information> informationNew = informationRepository.findById(id);
         informationNew.get().setAbout(information.getAbout());
         informationNew.get().setName(information.getName());
+        informationNew.get().setAge(information.getAge());
+        informationNew.get().setPhoneNumber(information.getPhoneNumber());
         informationNew.get().setEmail(information.getEmail());
         informationNew.get().setAddress(information.getAddress());
         informationNew.get().setCareer(information.getCareer());

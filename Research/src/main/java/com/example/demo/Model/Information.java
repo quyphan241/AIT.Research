@@ -14,6 +14,9 @@ public class Information {
     private String address;
     private String career;
     private String language;
+    private String phoneNumber;
+    private Integer age;
+
     private boolean isDeleted=false;
 
     public Long getId() {
@@ -77,6 +80,26 @@ public class Information {
     }
 
     public void setIsDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public void setDeleted(boolean deleted) {
         isDeleted = deleted;
     }
 }

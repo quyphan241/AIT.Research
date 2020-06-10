@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = {("*")})
 @RestController
 public class EducationRestController {
     @Autowired
@@ -33,9 +34,10 @@ public class EducationRestController {
     public Optional<Education> updateeducation(@PathVariable Long id, @RequestBody Education education) {
         Optional<Education> educationNew = educationRepository.findById(id);
         educationNew.get().setPeriod(education.getPeriod());
-        educationNew.get().setPosition(education.getPosition());
+        educationNew.get().setMajor(education.getMajor());
         educationNew.get().setSchool(education.getSchool());
         educationNew.get().setDescription(education.getDescription());
+        educationNew.get().setDegree(education.getDegree());
         educationRepository.save(education);
         return educationNew;
     }
