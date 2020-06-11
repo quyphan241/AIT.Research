@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import profileService from '../../service/ProfileService';
+
 class Profile extends Component {
 
-  constructor()
-  {
+  constructor() {
     super()
     this.state = {
-      fieldName:"",
-      fieldCareer:""
+      fieldName: "",
+      fieldCareer: ""
     }
   }
 
-  async componentDidMount()
-  {
+  async componentDidMount() {
     console.log("Mounted Edit");
     const res = await profileService.list()
     console.log(res);
     if (res) {
-       this.setState({
-         fieldName:res.name,
-         fieldCareer:res.career
-       }) 
+      this.setState({
+        fieldName: res.name,
+        fieldCareer: res.career
+      })
     }
     else {
-      alert("Error ==>"+res.message)
+      alert("Error ==>" + res.message)
     }
   }
 
@@ -37,7 +36,7 @@ class Profile extends Component {
               <div className="cc-profile-image"><img src="images/quyphan.jpg" alt="dmfgbm" /></div>
               <div className="h2 title">{this.state.fieldName}</div>
               <div>
-              <p className="category text-white">{this.state.fieldCareer}</p>
+                <p className="category text-white">{this.state.fieldCareer}</p>
               </div>
             </div>
           </div>
@@ -46,11 +45,12 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-     
       </div>
-    
+
     );
   }
 
+
 }
+
 export default Profile;

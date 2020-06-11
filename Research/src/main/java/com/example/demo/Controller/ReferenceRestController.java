@@ -11,6 +11,7 @@ import java.util.Optional;
 @CrossOrigin(origins = {("*")})
 @RestController
 public class ReferenceRestController {
+
     @Autowired
     private ReferenceRepository referenceRepository;
 
@@ -37,6 +38,7 @@ public class ReferenceRestController {
         referenceNew.get().setCompany(reference.getCompany());
         referenceNew.get().setDescription(reference.getDescription());
         referenceNew.get().setPosition(reference.getPosition());
+        referenceNew.get().setImage(reference.getImage());
         referenceRepository.save(reference);
         return referenceNew;
     }

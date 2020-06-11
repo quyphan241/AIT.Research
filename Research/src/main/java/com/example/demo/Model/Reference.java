@@ -12,6 +12,7 @@ public class Reference {
     private String position;
     private String company;
     private String description;
+    private String image;
     private boolean isDeleted=false;
 
 
@@ -61,5 +62,13 @@ public class Reference {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -24,7 +24,7 @@ public class SkillRestController {
     }
 
     @PostMapping("/skills")
-    public Skill addskill(@RequestBody Skill skill) {
+    public Skill addSkill(@RequestBody Skill skill) {
         skillRepository.save(skill);
         return skill;
     }

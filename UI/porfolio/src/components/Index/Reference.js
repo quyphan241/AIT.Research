@@ -32,7 +32,7 @@ class Reference extends Component {
                             <ol className="carousel-indicators">
                                 {
                                     this.state.listReference.map((data,i) => {
-                                        if (i == 0) {
+                                        if (i === 0) {
                                             return (
                                                 <li className="active" data-target="#cc-Indicators" data-slide-to={i} />
 
@@ -50,11 +50,11 @@ class Reference extends Component {
                             <div className="carousel-inner">
                                 {
                                     this.state.listReference.map((data, i) => {
-                                        if (i == 0) {
+                                        if (i === 0) {
                                             return (
                                                 <div className="carousel-item active">
                                                     <div className="row">
-                                                        <div className="col-lg-2 col-md-3 cc-reference-header"><img src="images/reference-image-1.jpg" alt="Image" />
+                                                        <div className="col-lg-2 col-md-3 cc-reference-header"><img src="images/reference-image-1.jpg" alt="Reference" />
                                                             <div className="h5 pt-2">{data.name}</div>
                                                             <p className="category">{data.position}</p>
                                                         </div>
@@ -69,7 +69,7 @@ class Reference extends Component {
                                             return (
                                                 <div className="carousel-item">
                                                     <div className="row">
-                                                        <div className="col-lg-2 col-md-3 cc-reference-header"><img src="images/reference-image-1.jpg" alt="Image" />
+                                                        <div className="col-lg-2 col-md-3 cc-reference-header"><img src="images/reference-image-1.jpg" alt="Reference" />
                                                             <div className="h5 pt-2">{data.name}</div>
                                                             <p className="category">{data.position}</p>
                                                         </div>

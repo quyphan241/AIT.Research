@@ -52,8 +52,6 @@ class Education extends Component {
 
                 </div>
             </div>
-
-
         );
     }
 }

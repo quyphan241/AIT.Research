@@ -6,8 +6,26 @@ const profile = {};
 
 profile.list = async () => {
   const res = await axios.get(baseUrl)
-  .then(response=> {return response.data })
-  .catch(error=>{ return error; })
+    .then(response => { return response.data })
+    .catch(error => { return error; })
+  return res;
+}
+
+profile.update = async (state) => {
+  const datapost = {
+    name: state.name,
+    career: state.career,
+    email: state.email,
+    phoneNumber: state.phoneNumber,
+    address: state.address,
+    language: state.language,
+    age: state.age,
+    about: state.about
+  }
+
+  const res = await axios.put(baseUrl, datapost)
+    .then(response => { return response.data })
+    .catch(error => { return error.response })
   return res;
 }
 

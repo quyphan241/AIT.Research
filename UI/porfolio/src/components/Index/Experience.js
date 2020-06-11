@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
 import experienceService from '../../service/ExperienceService';
+import EditExperience from '../edit/EditExperience';
+
 
 class Experience extends Component {
 
   constructor() {
     super()
     this.state = {
-      listExperience: []
+      listExperience: [],
+      showEditModal: false
     }
   }
+
+  showModal = () => {
+    this.setState({ showEditModal: true });
+  };
+
 
   async componentDidMount() {
     console.log("Mounted list");
@@ -31,7 +39,8 @@ class Experience extends Component {
             this.state.listExperience.map((data) => {
               return (
                 <div className="card">
-
+                     <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
+          onClick={() => this.showModal()}>Edit</button> 
                   <div className="row">
                     <div className="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset={50} data-aos-duration={500}>
                       <div className="card-body cc-experience-header">
@@ -46,6 +55,7 @@ class Experience extends Component {
                       </div>
                     </div>
                   </div>
+                  <EditExperience show={false} />
                 </div>
               )
             })
