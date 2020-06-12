@@ -69,17 +69,16 @@ class EditExperience extends Component {
   }
 
   async onClickSave() {
-    console.log(this.state);
+    console.log(this.state,"sdfuiyskfdjhskjd");
     const res = await experienceService.create(this.state);
     if (res) {
-      window.location.replace("/");
+      window.location.replace("/edit");
     }
     else {
-      alert("Error => " + res.message.message)
+      alert("Error => " + res.message)
     }
   }
-
-
+   
   render() {
     return (
       <div>
