@@ -30,12 +30,17 @@ public class SkillRestController {
     }
 
     @PutMapping("/skills/{id}")
-    public Optional<Skill> updateSkill(@PathVariable Long id, @RequestBody Skill skill) {
-        Optional<Skill> skillNew = skillRepository.findById(id);
-        skillNew.get().setName(skill.getName());
-        skillNew.get().setProficiency(skill.getProficiency());
-        skillRepository.save(skill);
-        return skillNew;
+    public Skill updateSkill(@PathVariable Long id, @RequestBody Skill newSkill) {
+        return skillRepository.findById(id)
+                .map(skill -> {
+                    skill.setName(newSkill.getName());
+                    skill.setProficiency(newSkill.getProficiency());
+                    return skillRepository.save(skill);
+    })
+                .orElseGet(() -> {
+                    newSkill.setId(id);
+                    return skillRepository.save(newSkill);
+                });
     }
 
     @PutMapping("/skills/delete/{id}")

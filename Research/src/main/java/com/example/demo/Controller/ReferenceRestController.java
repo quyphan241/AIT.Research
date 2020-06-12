@@ -32,15 +32,20 @@ public class ReferenceRestController {
     }
 
     @PutMapping("/references/{id}")
-    public Optional<Reference> updatereference(@PathVariable Long id, @RequestBody Reference reference) {
-        Optional<Reference> referenceNew = referenceRepository.findById(id);
-        referenceNew.get().setName(reference.getName());
-        referenceNew.get().setCompany(reference.getCompany());
-        referenceNew.get().setDescription(reference.getDescription());
-        referenceNew.get().setPosition(reference.getPosition());
-        referenceNew.get().setImage(reference.getImage());
-        referenceRepository.save(reference);
-        return referenceNew;
+    public Reference updateReference(@PathVariable Long id, @RequestBody Reference newReference) {
+        return referenceRepository.findById(id)
+                .map(reference -> {
+                    reference.setName(newReference.getName());
+                    reference.setPosition(newReference.getPosition());
+                    reference.setImage(newReference.getImage());
+                    reference.setDescription(newReference.getDescription());
+                    reference.setCompany(newReference.getCompany());
+                    return referenceRepository.save(reference);
+                })
+                .orElseGet(() -> {
+                    newReference.setId(id);
+                    return referenceRepository.save(newReference);
+                });
     }
 
     @PutMapping("/references/delete/{id}")

@@ -4,7 +4,7 @@ import { Modal, Button, Header, Title, Footer } from 'react-bootstrap'
 
 
 
-class About extends Component {
+class EditProfile extends Component {
   constructor() {
     super()
     this.state = {
@@ -47,7 +47,6 @@ class About extends Component {
     const res = await profileService.update(this.state)
     if (res) {
       this.hideModal()
-      window.location.reload(true)
     }
     else {
       console.log("Error");
@@ -62,14 +61,14 @@ class About extends Component {
 
   hideModal = () => {
     this.setState({ show: false });
-    window.location.reload(true)
   };
 
   render() {
     return (
       <div className="section" id="about">
         <div className="container">
-    
+        <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
+          onClick={() => this.showModal()}>Edit</button>
           <div className="card" data-aos="fade-up" data-aos-offset="10">
             <div className="row">
               <div className="col-lg-6 col-md-12">
@@ -77,11 +76,21 @@ class About extends Component {
                   <div className="h4 mt-0 title">About</div>
                   <p>{this.state.about}</p>
                 </div>
+    
               </div>
               <div className="col-lg-6 col-md-12">
                 <div className="card-body">
                   <div className="h4 mt-0 title">Basic Information</div>
-                  <div className="row">
+                  
+                  <div className="row mt-3">
+                    <div className="col-sm-4"><strong className="text-uppercase">Name:</strong></div>
+                    <div className="col-sm-8">{this.state.name}</div>
+                  </div>
+                  <div className="row mt-3">
+                    <div className="col-sm-4"><strong className="text-uppercase">career:</strong></div>
+                    <div className="col-sm-8">{this.state.career}</div>
+                  </div>
+                  <div className="row mt-3">
                     <div className="col-sm-4"><strong className="text-uppercase">Age:</strong></div>
                     <div className="col-sm-8">{this.state.age}</div>
                   </div>
@@ -195,4 +204,4 @@ class About extends Component {
 }
 
 
-export default About;
+export default EditProfile;

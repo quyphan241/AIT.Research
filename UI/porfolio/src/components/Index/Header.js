@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Link, NavLink } from "react-router-dom";
+
 class Header extends Component {
   render() {
     return (
@@ -54,7 +56,13 @@ class Header extends Component {
                       Contact
                     </a>
                   </li>
+                  <li className="nav-item">
+                
+                  <Link className="nav-link smooth-scroll" to="/edit">Edit</Link>
+
+                  </li>
                 </ul>
+
               </div>
             </div>
           </nav>

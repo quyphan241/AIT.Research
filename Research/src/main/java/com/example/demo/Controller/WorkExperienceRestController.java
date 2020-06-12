@@ -32,14 +32,19 @@ public class WorkExperienceRestController {
     }
 
     @PutMapping("/workExperiences/{id}")
-    public Optional<WorkExperience> updateworkExperience(@PathVariable Long id, @RequestBody WorkExperience workExperience) {
-        Optional<WorkExperience> workExperienceNew = workExperienceRepository.findById(id);
-        workExperienceNew.get().setPeriod(workExperience.getPeriod());
-        workExperienceNew.get().setPosition(workExperience.getPosition());
-        workExperienceNew.get().setDescription(workExperience.getDescription());
-        workExperienceNew.get().setCompany(workExperience.getCompany());
-        workExperienceRepository.save(workExperience);
-        return workExperienceNew;
+    public WorkExperience updateworkExperience(@PathVariable Long id, @RequestBody WorkExperience newWorkExperience) {
+        return workExperienceRepository.findById(id)
+                .map(workExperience -> {
+                    workExperience.setPeriod(newWorkExperience.getPeriod());
+                    workExperience.setPosition(newWorkExperience.getPosition());
+                    workExperience.setCompany(newWorkExperience.getCompany());
+                    workExperience.setDescription(newWorkExperience.getDescription());
+                    return workExperienceRepository.save(workExperience);
+                })
+                .orElseGet(() -> {
+                    newWorkExperience.setId(id);
+                    return workExperienceRepository.save(newWorkExperience);
+                });
     }
 
     @PutMapping("/workExperiences/delete/{id}")

@@ -32,17 +32,32 @@ public class InformationeRestController {
     }
 
     @PutMapping("/informations/{id}")
-    public Optional<Information> updateInformation(@PathVariable Long id, @RequestBody Information information) {
-        Optional<Information> informationNew = informationRepository.findById(id);
-        informationNew.get().setAbout(information.getAbout());
-        informationNew.get().setName(information.getName());
-        informationNew.get().setAge(information.getAge());
-        informationNew.get().setPhoneNumber(information.getPhoneNumber());
-        informationNew.get().setEmail(information.getEmail());
-        informationNew.get().setAddress(information.getAddress());
-        informationNew.get().setCareer(information.getCareer());
-        informationRepository.save(information);
-        return informationNew;
+    public Information updateInformation(@PathVariable Long id, @RequestBody Information newInformation) {
+//        Optional<Information> informationNew = informationRepository.findById(id);
+//        informationNew.get().setAbout(information.getAbout());
+//        informationNew.get().setName(information.getName());
+//        informationNew.get().setAge(information.getAge());
+//        informationNew.get().setPhoneNumber(information.getPhoneNumber());
+//        informationNew.get().setEmail(information.getEmail());
+//        informationNew.get().setAddress(information.getAddress());
+//        informationNew.get().setCareer(information.getCareer());
+//        informationRepository.save(information);
+//        return informationNew;
+        return informationRepository.findById(id)
+                .map(information -> {
+                    information.setName(newInformation.getName());
+                    information.setAbout(newInformation.getAbout());
+                    information.setAge(newInformation.getAge());
+                    information.setPhoneNumber(newInformation.getPhoneNumber());
+                    information.setEmail(newInformation.getEmail());
+                    information.setAddress(newInformation.getAddress());
+                    information.setCareer(newInformation.getCareer());
+                    return informationRepository.save(information);
+                })
+                .orElseGet(() -> {
+                    newInformation.setId(id);
+                    return informationRepository.save(newInformation);
+                });
     }
 
     @PutMapping("/informations/delete/{id}")

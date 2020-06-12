@@ -31,15 +31,20 @@ public class EducationRestController {
     }
 
     @PutMapping("/educations/{id}")
-    public Optional<Education> updateeducation(@PathVariable Long id, @RequestBody Education education) {
-        Optional<Education> educationNew = educationRepository.findById(id);
-        educationNew.get().setPeriod(education.getPeriod());
-        educationNew.get().setMajor(education.getMajor());
-        educationNew.get().setSchool(education.getSchool());
-        educationNew.get().setDescription(education.getDescription());
-        educationNew.get().setDegree(education.getDegree());
-        educationRepository.save(education);
-        return educationNew;
+    public Education updateEducation(@PathVariable Long id, @RequestBody Education newEducation) {
+        return educationRepository.findById(id)
+                .map(education -> {
+                    education.setPeriod(newEducation.getPeriod());
+                    education.setMajor(newEducation.getMajor());
+                    education.setSchool(newEducation.getMajor());
+                    education.setDescription(newEducation.getDescription());
+                    education.setDegree(newEducation.getDegree());
+                    return educationRepository.save(education);
+                })
+                .orElseGet(() -> {
+                    newEducation.setId(id);
+                    return educationRepository.save(newEducation);
+                });
     }
 
     @PutMapping("/educations/delete/{id}")
