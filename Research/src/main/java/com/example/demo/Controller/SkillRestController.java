@@ -43,7 +43,7 @@ public class SkillRestController {
                 });
     }
 
-    @PutMapping("/skills/delete/{id}")
+    @DeleteMapping("/skills/delete/{id}")
     public void removeSkill(@PathVariable Long id) {
         Optional<Skill> skillNew = skillRepository.findById(id);
         skillRepository.deleteById(id);

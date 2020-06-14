@@ -47,8 +47,8 @@ public class WorkExperienceRestController {
                 });
     }
 
-    @PutMapping("/workExperiences/delete/{id}")
-    public void removeworkExperience(@PathVariable Long id) {
+    @DeleteMapping("/workExperiences/delete/{id}")
+    public void removeWorkExperience(@PathVariable Long id) {
         Optional<WorkExperience> workExperienceNew = workExperienceRepository.findById(id);
         workExperienceRepository.deleteById(id);
     }

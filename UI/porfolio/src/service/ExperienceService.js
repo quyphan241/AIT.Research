@@ -1,6 +1,6 @@
 import axios from "axios";
-// const baseUrl = "http://localhost:8080/workExperiences"
-const baseUrl = "http://192.168.144.122:8080/workExperiences"
+const baseUrl = "http://localhost:8080/workExperiences"
+// const baseUrl = "http://192.168.144.122:8080/workExperiences"
 const experience = {};
 
 experience.list = async () => {
@@ -42,9 +42,7 @@ experience.create = async (state) => {
   description: state.description,
   company: state.company
   }
-
   const urlPost = baseUrl+"/"
-
   const res = await axios.post(urlPost,datapost)
   .then(response=>{
     const data = { success: true, message: response.data }
@@ -54,7 +52,14 @@ experience.create = async (state) => {
     const data = { success: false, message: error.response.data }
     return data;
   })
+  return res;
+}
 
+experience.delete = async (id) => {
+  const urlDelete = baseUrl+"/delete/"+id
+  const res = await axios.delete(urlDelete)
+  .then(response=> { return response.data })
+  .catch(error =>{ return error })
   return res;
 }
 

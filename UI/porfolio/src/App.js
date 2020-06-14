@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 import Edit from './components/edit/Edit'
-import Index from './components/Index';
+import Index from './components/Index/Index';
 import {
   BrowserRouter as Router,
   Switch,

@@ -60,7 +60,7 @@ public class InformationeRestController {
                 });
     }
 
-    @PutMapping("/informations/delete/{id}")
+    @DeleteMapping("/informations/delete/{id}")
     public void removeInformation(@PathVariable Long id) {
         Optional<Information> informationNew = informationRepository.findById(id);
         informationRepository.deleteById(id);

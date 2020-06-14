@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import educationService from '../../service/EducationService'
+
 class Education extends Component {
 
     constructor() {
@@ -20,7 +21,7 @@ class Education extends Component {
             alert("Error ==>" + res.message)
         }
     }
-
+     
     render() {
         return (
             <div className="section">

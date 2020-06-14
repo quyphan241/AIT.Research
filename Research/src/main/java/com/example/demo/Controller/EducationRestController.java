@@ -47,8 +47,8 @@ public class EducationRestController {
                 });
     }
 
-    @PutMapping("/educations/delete/{id}")
-    public void removeeducation(@PathVariable Long id) {
+    @DeleteMapping("/educations/delete/{id}")
+    public void removeEducation(@PathVariable Long id) {
         Optional<Education> educationNew = educationRepository.findById(id);
         educationRepository.deleteById(id);
     }

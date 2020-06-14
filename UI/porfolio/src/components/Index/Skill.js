@@ -36,6 +36,7 @@ class Skill extends Component {
                   this.state.listSkill.map((data, i) => {
                     return (
                       <div className="col-md-6">
+  
                         <div className="progress-container progress-primary"><span className="progress-badge">{data.name}</span>
                           <div className="progress">
                             <div className="progress-bar progress-bar-primary" data-aos="progress-full"

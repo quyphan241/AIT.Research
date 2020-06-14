@@ -48,7 +48,7 @@ public class ReferenceRestController {
                 });
     }
 
-    @PutMapping("/references/delete/{id}")
+    @DeleteMapping("/references/delete/{id}")
     public void removereference(@PathVariable Long id) {
         Optional<Reference> referenceNew = referenceRepository.findById(id);
         referenceRepository.deleteById(id);

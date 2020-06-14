@@ -18,6 +18,7 @@ class EditExperience extends Component {
       description: "",
     }
   }
+
   showCreateModal = () => {
     this.setState({ showCreateModal: true });
   }
@@ -25,19 +26,20 @@ class EditExperience extends Component {
   hideCreateModal = () => {
     this.setState({ showCreateModal: false });
   };
-  showModal = async (id) => {
+
+  showEditModal = async (id) => {
     this.setState({ showEditModal: true });
-    const res = await experienceService.get(id)
+    const res = await experienceService.get(id);
     this.setState({
       id: res.id,
       period: res.period,
       company: res.company,
       position: res.position,
       description: res.description,
-    })
+    });
   };
 
-  hideModal = () => {
+  hideEditModal = () => {
     this.setState({ showEditModal: false });
   };
 
@@ -58,7 +60,7 @@ class EditExperience extends Component {
     console.log("Execute update");
     const res = await experienceService.update(this.state, this.state.id)
     if (res) {
-      this.hideModal()
+      this.hideEditModal()
       window.location.reload()
     }
     else {
@@ -69,7 +71,7 @@ class EditExperience extends Component {
   }
 
   async onClickSave() {
-    console.log(this.state,"sdfuiyskfdjhskjd");
+    console.log(this.state, "sdfuiyskfdjhskjd");
     const res = await experienceService.create(this.state);
     if (res) {
       window.location.replace("/edit");
@@ -78,7 +80,20 @@ class EditExperience extends Component {
       alert("Error => " + res.message)
     }
   }
-   
+
+  async onClickDelete(i, id) {
+    var yes = window.confirm("Are you sure to delete this item?");
+    if (yes === true) {
+      const res = await experienceService.delete(id)
+      alert("Deleted")
+      const list = this.state.listExperience
+      list.splice(i, 1)
+      this.setState({ listExperience: list })  
+      window.location.replace("/edit"); 
+    }
+  }
+
+
   render() {
     return (
       <div>
@@ -86,29 +101,38 @@ class EditExperience extends Component {
           <div className="container cc-experience">
             <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
               onClick={() => this.showCreateModal()}>Create </button>
+
             <div className="h4 text-center mb-4 title">Work Experience</div>
             {
-              this.state.listExperience.map((data) => {
+              this.state.listExperience.map((data, i) => {
                 return (
                   <div className="card">
-                    <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
-                      onClick={() => this.showModal(data.id)}>Edit </button>
                     <div className="row">
                       <div className="col-md-3 bg-primary" data-aos="fade-right" data-aos-offset={50} data-aos-duration={500}>
                         <div className="card-body cc-experience-header">
                           <p>{data.period}</p>
                           <div className="h5">{data.company}</div>
+
                         </div>
                       </div>
-                      <div className="col-md-9" data-aos="fade-left" data-aos-offset={50} data-aos-duration={500}>
+                      <div className="col-md-7" data-aos="fade-left" data-aos-offset={50} data-aos-duration={500}>
                         <div className="card-body">
                           <div className="h5">{data.position}</div>
                           <p>{data.description}</p>
+                       
+                        </div>
+                      </div>
+                      <div className="col-md-2" data-aos="fade-left" data-aos-offset={50} data-aos-duration={500}>
+                        <div className="card-body">
+                          <button className="btn btn-primary float-right float-top" data-toggle="modal" data-target="#exampleModal"
+                            onClick={() => this.showEditModal(data.id)}>Edit </button>
+                          <button onClick={() => this.onClickDelete(i, data.id)}
+                            class="btn btn-danger float-right"> Delete </button  >
                         </div>
                       </div>
                     </div>
                     <Modal show={this.state.showEditModal}>
-                      <Modal.Header closeButton onClick={() => this.hideModal()}>
+                      <Modal.Header closeButton onClick={() => this.hideEditModal()}>
                         <Modal.Title>Edit Experience {data.id} </Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
@@ -146,7 +170,7 @@ class EditExperience extends Component {
                         </div>
                       </Modal.Body>
                       <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.hideModal()}>
+                        <Button variant="secondary" onClick={() => this.hideEditModal()}>
                           Close
                       </Button>
                         <Button variant="primary" type="submit" onClick={() => this.onClickUpdate()}>
@@ -183,7 +207,6 @@ class EditExperience extends Component {
               <div className="col-md-8 mb-3">
                 <label >Position</label>
                 <input type="text" className="form-control" onChange={(value) => this.setState({ position: value.target.value })}
-
                 />
               </div>
             </div>
