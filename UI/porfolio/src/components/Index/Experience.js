@@ -58,7 +58,7 @@ class Experience extends Component {
                     <div className="col-md-9" data-aos="fade-left" data-aos-offset={50} data-aos-duration={500}>
                       <div className="card-body">
                         <div className="h5">{data.position}</div>
-                        <p>{data.description}</p>
+                        <p style={{whiteSpace: 'pre-line', textAlign: 'justify'}}>{data.description}</p>
                       </div>
                     </div>
                   </div>

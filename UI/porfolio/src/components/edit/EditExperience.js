@@ -89,7 +89,7 @@ class EditExperience extends Component {
       const list = this.state.listExperience
       list.splice(i, 1)
       this.setState({ listExperience: list })  
-      window.location.replace("/edit"); 
+      // window.location.replace("/edit"); 
     }
   }
 
@@ -99,7 +99,7 @@ class EditExperience extends Component {
       <div>
         <div className="section" id="experience">
           <div className="container cc-experience">
-            <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
+            <button className="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"
               onClick={() => this.showCreateModal()}>Create </button>
 
             <div className="h4 text-center mb-4 title">Work Experience</div>
@@ -118,7 +118,7 @@ class EditExperience extends Component {
                       <div className="col-md-7" data-aos="fade-left" data-aos-offset={50} data-aos-duration={500}>
                         <div className="card-body">
                           <div className="h5">{data.position}</div>
-                          <p>{data.description}</p>
+                          <p style={{whiteSpace: 'pre-line', textAlign: 'justify'}}>{data.description}</p>
                        
                         </div>
                       </div>
@@ -133,7 +133,7 @@ class EditExperience extends Component {
                     </div>
                     <Modal show={this.state.showEditModal}>
                       <Modal.Header closeButton onClick={() => this.hideEditModal()}>
-                        <Modal.Title>Edit Experience {data.id} </Modal.Title>
+                        <Modal.Title>Edit Experience  </Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                         <div className="row">
@@ -161,7 +161,7 @@ class EditExperience extends Component {
                           </div>
                         </div>
                         <div className="row">
-                          <div className="col-md-8 mb-3">
+                          <div className="col-md-12 mb-3">
                             <label >Description</label>
                             <textarea type="text" className="form-control"
                               value={this.state.description} onChange={(value) => this.setState({ description: value.target.value })}

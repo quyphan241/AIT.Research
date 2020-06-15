@@ -60,7 +60,7 @@ class Reference extends Component {
                                                         <div className="col-lg-9 col-md-9">
                                                             <div className="h5 pt-2">{data.name}</div>
                                                             <p className="category">{data.company}<br></br>{data.position}</p>
-                                                            <p> {data.description}</p>
+                                                            <p style={{whiteSpace: 'pre-line'}}> {data.description}</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -77,7 +77,7 @@ class Reference extends Component {
                                                             <div className="h5 pt-2">{data.name}</div>
                                                             <p className="category">{data.company}
                                                             <br></br> {data.position}</p>
-                                                            <p> {data.description}</p>
+                                                            <p style={{whiteSpace: 'pre-line'}}> {data.description}</p>
                                                         </div>
                                                     </div>
                                                 </div>

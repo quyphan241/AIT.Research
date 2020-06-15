@@ -1,6 +1,6 @@
 import axios from 'axios';
-// const baseUrl = "http://192.168.144.122:8080/skills"
-const baseUrl = "http://localhost:8080/skills"
+const baseUrl = "http://192.168.144.122:8080/skills"
+// const baseUrl = "http://localhost:8080/skills"
 
 
 const skill = {};

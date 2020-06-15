@@ -1,6 +1,6 @@
 import axios from 'axios';
-const baseUrl = "http://localhost:8080/informations/1"
-// const baseUrl = "http://192.168.144.122:8080/informations/1"
+// const baseUrl = "http://localhost:8080/informations/1"
+const baseUrl = "http://192.168.144.122:8080/informations/1"
 
 const profile = {};
 
@@ -20,7 +20,8 @@ profile.update = async (state) => {
     address: state.address,
     language: state.language,
     age: state.age,
-    about: state.about
+    about: state.about,
+    image: state.image
   }
 
   const res = await axios.put(baseUrl, datapost)

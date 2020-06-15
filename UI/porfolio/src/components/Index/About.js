@@ -16,7 +16,8 @@ class About extends Component {
       email: "",
       phoneNumber: "",
       language: "",
-      age: ""
+      age: "",
+      image: ""
     }
 
   }
@@ -34,6 +35,7 @@ class About extends Component {
         address: res.address,
         email: res.email,
         phoneNumber: res.phoneNumber,
+        image: res.image,
         language: res.language
       })
     }
@@ -69,37 +71,36 @@ class About extends Component {
     return (
       <div className="section" id="about">
         <div className="container">
-    
           <div className="card" data-aos="fade-up" data-aos-offset="10">
             <div className="row">
               <div className="col-lg-6 col-md-12">
                 <div className="card-body">
                   <div className="h4 mt-0 title">About</div>
-                  <p>{this.state.about}</p>
+                  <p style={{whiteSpace: 'pre-line', textAlign: 'justify'}}>{this.state.about}</p>
                 </div>
               </div>
               <div className="col-lg-6 col-md-12">
                 <div className="card-body">
                   <div className="h4 mt-0 title">Basic Information</div>
                   <div className="row">
-                    <div className="col-sm-4"><strong className="text-uppercase">Age:</strong></div>
-                    <div className="col-sm-8">{this.state.age}</div>
+                    <div className="col-sm-4" style={{textAlign: 'justify'}}><strong className="text-uppercase">Age:</strong></div>
+                    <div className="col-sm-8" style={{textAlign: 'justify'}}>{this.state.age}</div>
                   </div>
                   <div className="row mt-3">
-                    <div className="col-sm-4"><strong className="text-uppercase">Email:</strong></div>
-                    <div className="col-sm-8">{this.state.email}</div>
+                    <div className="col-sm-4" style={{textAlign: 'justify'}}><strong className="text-uppercase">Email:</strong></div>
+                    <div className="col-sm-8" style={{textAlign: 'justify'}}>{this.state.email}</div>
                   </div>
                   <div className="row mt-3">
-                    <div className="col-sm-4"><strong className="text-uppercase">Phone:</strong></div>
-                    <div className="col-sm-8">{this.state.phoneNumber}</div>
+                    <div className="col-sm-4" style={{textAlign: 'justify'}}><strong className="text-uppercase">Phone:</strong></div>
+                    <div className="col-sm-8" style={{textAlign: 'justify'}}>{this.state.phoneNumber}</div>
                   </div>
                   <div className="row mt-3">
-                    <div className="col-sm-4"><strong className="text-uppercase">Address:</strong></div>
-                    <div className="col-sm-8">{this.state.address}</div>
+                    <div className="col-sm-4" style={{textAlign: 'justify'}}><strong className="text-uppercase">Address:</strong></div>
+                    <div className="col-sm-8" style={{textAlign: 'justify'}} >{this.state.address}</div>
                   </div>
                   <div className="row mt-3">
-                    <div className="col-sm-4"><strong className="text-uppercase">Language:</strong></div>
-                    <div className="col-sm-8">{this.state.language}</div>
+                    <div className="col-sm-4" style={{textAlign: 'justify'}}><strong className="text-uppercase">Language:</strong></div>
+                    <div className="col-sm-8" style={{textAlign: 'justify'}}>{this.state.language}</div>
                   </div>
                 </div>
               </div>

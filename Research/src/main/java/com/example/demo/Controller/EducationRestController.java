@@ -36,7 +36,7 @@ public class EducationRestController {
                 .map(education -> {
                     education.setPeriod(newEducation.getPeriod());
                     education.setMajor(newEducation.getMajor());
-                    education.setSchool(newEducation.getMajor());
+                    education.setSchool(newEducation.getSchool());
                     education.setDescription(newEducation.getDescription());
                     education.setDegree(newEducation.getDegree());
                     return educationRepository.save(education);

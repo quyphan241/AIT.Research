@@ -42,10 +42,11 @@ class EditEducation extends Component {
     showEditModal = async (id) => {
         this.setState({ showEditModal: true });
         const res = await educationService.get(id);
+        console.log(res)
         this.setState({
             id: res.id,
+            school: res.school,
             period: res.period,
-            shool: res.school,
             major: res.major,
             degree: res.degree,
             description: res.description,
@@ -85,16 +86,10 @@ class EditEducation extends Component {
         var yes = window.confirm("Are you sure to delete this item?");
         if (yes === true) {
             const res = await educationService.delete(id)
-            if (res) {
-                alert("Deleted")
-                const list = this.state.listEducation
-                list.splice(i, 1)
-                this.setState({ listEducation: list })
-                window.location.replace("/edit");
-            }
-            else {
-                console.log(res); alert(JSON.stringify(res))
-            }
+            alert("Deleted")
+            const list = this.state.listEducation
+            list.splice(i, 1)
+            this.setState({ listEducation: list })
         }
     }
 
@@ -102,7 +97,7 @@ class EditEducation extends Component {
         return (
             <div className="section">
                 <div className="container cc-education">
-                    <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
+                    <button className="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"
                         onClick={() => this.showCreateModal()}>Create </button>
                     <div className="h4 text-center mb-4 title">Education</div>
 
@@ -123,7 +118,7 @@ class EditEducation extends Component {
                                             <div className="card-body">
                                                 <div className="h5">{data.major}</div>
                                                 <p className="category">{data.school}</p>
-                                                <p>{data.description}</p>
+                                                <p style={{whiteSpace: 'pre-line', textAlign: 'justify'}}>{data.description}</p>
                                             </div>
                                         </div>
                                         <div className="col-md-2" data-aos="fade-left" data-aos-offset={50} data-aos-duration={500}>
@@ -137,11 +132,11 @@ class EditEducation extends Component {
                                     </div>
                                     <Modal show={this.state.showEditModal}>
                                         <Modal.Header closeButton onClick={() => this.hideEditModal()}>
-                                            <Modal.Title>Edit Experience {data.id} </Modal.Title>
+                                            <Modal.Title>Edit Experience </Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
-                                            <div className="row">
-                                                <div className="col-md-8 mb-3">
+                                        <div className="row">
+                                                <div className="col-md-12 mb-3">
                                                     <label >School</label>
                                                     <input type="text" className="form-control"
                                                         value={this.state.school}
@@ -150,7 +145,7 @@ class EditEducation extends Component {
                                                 </div>
                                             </div>
                                             <div className="row">
-                                                <div className="col-md-8 mb-3">
+                                                <div className="col-md-12 mb-3">
                                                     <label>Period</label>
                                                     <input type="text" className="form-control"
                                                         value={this.state.period}
@@ -159,7 +154,7 @@ class EditEducation extends Component {
                                                 </div>
                                             </div>
                                             <div className="row">
-                                                <div className="col-md-8 mb-3">
+                                                <div className="col-md-12 mb-3">
                                                     <label >Degree</label>
                                                     <input type="text" className="form-control"
                                                         value={this.state.degree}
@@ -168,7 +163,7 @@ class EditEducation extends Component {
                                                 </div>
                                             </div>
                                             <div className="row">
-                                                <div className="col-md-8 mb-3">
+                                                <div className="col-md-12 mb-3">
                                                     <label >Major</label>
                                                     <input type="text" className="form-control"
                                                         value={this.state.major}
@@ -177,7 +172,7 @@ class EditEducation extends Component {
                                                 </div>
                                             </div>
                                             <div className="row">
-                                                <div className="col-md-8 mb-3">
+                                                <div className="col-md-12 mb-3">
                                                     <label >Description</label>
                                                     <textarea type="text" className="form-control"
                                                         value={this.state.description}
@@ -199,62 +194,62 @@ class EditEducation extends Component {
                             )
                         })
                     }
-<Modal show={this.state.showCreateModal}>
-                    <Modal.Header closeButton onClick={() => this.hideCreateModal()}>
-                        <Modal.Title>Create Education </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <div className="row">
-                            <div className="col-md-8 mb-3">
-                                <label >School</label>
-                                <input type="text" className="form-control"
-                                    onChange={(value) => this.setState({ school: value.target.value })}
-                                />
+                    <Modal show={this.state.showCreateModal}>
+                        <Modal.Header closeButton onClick={() => this.hideCreateModal()}>
+                            <Modal.Title>Create Education </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <div className="row">
+                                <div className="col-md-8 mb-3">
+                                    <label >School</label>
+                                    <input type="text" className="form-control"
+                                        onChange={(value) => this.setState({ school: value.target.value })}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-8 mb-3">
-                                <label>Major</label>
-                                <input type="text" className="form-control"
-                                    onChange={(value) => this.setState({ major: value.target.value })}
-                                />
+                            <div className="row">
+                                <div className="col-md-8 mb-3">
+                                    <label>Major</label>
+                                    <input type="text" className="form-control"
+                                        onChange={(value) => this.setState({ major: value.target.value })}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-8 mb-3">
-                                <label >Position</label>
-                                <input type="text" className="form-control"
-                                    onChange={(value) => this.setState({ position: value.target.value })}
-                                />
+                            <div className="row">
+                                <div className="col-md-8 mb-3">
+                                    <label >Position</label>
+                                    <input type="text" className="form-control"
+                                        onChange={(value) => this.setState({ position: value.target.value })}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-8 mb-3">
-                                <label >Period</label>
-                                <input type="text" className="form-control"
-                                    onChange={(value) => this.setState({ period: value.target.value })}
-                                />
+                            <div className="row">
+                                <div className="col-md-8 mb-3">
+                                    <label >Period</label>
+                                    <input type="text" className="form-control"
+                                        onChange={(value) => this.setState({ period: value.target.value })}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-md-8 mb-3">
-                                <label >Description</label>
-                                <textarea type="text" className="form-control"
-                                    onChange={(value) => this.setState({ description: value.target.value })}
-                                />
+                            <div className="row">
+                                <div className="col-md-8 mb-3">
+                                    <label >Description</label>
+                                    <textarea type="text" className="form-control"
+                                        onChange={(value) => this.setState({ description: value.target.value })}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={() => this.hideCreateModal()}>
-                            Close
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button variant="secondary" onClick={() => this.hideCreateModal()}>
+                                Close
                         </Button>
-                        <Button variant="primary" type="submit" onClick={() => this.onClickSave()}>
-                            Create
+                            <Button variant="primary" type="submit" onClick={() => this.onClickSave()}>
+                                Create
                         </Button>
-                    </Modal.Footer>
-                </Modal>
-                </div>                
+                        </Modal.Footer>
+                    </Modal>
+                </div>
             </div>
         );
     }

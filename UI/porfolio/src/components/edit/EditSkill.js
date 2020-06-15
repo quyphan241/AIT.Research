@@ -3,6 +3,7 @@ import skillService from '../../service/SkillService';
 import { Modal, Button } from "react-bootstrap";
 
 
+
 class EditSkill extends Component {
 
   constructor() {
@@ -63,7 +64,6 @@ class EditSkill extends Component {
   }
 
   async onClickSave() {
-    console.log(this.state, "sdfuiyskfdjhskjd");
     const res = await skillService.create(this.state);
     if (res) {
       window.location.replace("/edit");
@@ -81,7 +81,6 @@ class EditSkill extends Component {
       const list = this.state.listSkill
       list.splice(i, 1)
       this.setState({ listSkill: list })
-      window.location.replace("/edit");
     }
   }
 
@@ -90,7 +89,7 @@ class EditSkill extends Component {
     return (
       <div className="section" id="skill">
         <div className="container">
-          <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
+          <button className="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"
             onClick={() => this.showCreateModal()}>Create </button>
           <div className="h4 text-center mb-4 title">Personal Skills</div>
           <div className="card">
@@ -101,23 +100,27 @@ class EditSkill extends Component {
                   this.state.listSkill.map((data, i) => {
                     return (
                       <div className="col-md-6">
-                        <div className="progress-container progress-primary"><span className="progress-badge">{data.name}</span>
-                          <button type="button" onClick={() => this.onClickDelete(i, data.id)} className="close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                          <button className="btn btn-primary float-right float-top btn-sm" data-toggle="modal" data-target="#exampleModal"
-                            onClick={() => this.showEditModal(data.id)}>Edit </button>
+                        <div className="progress-container progress-primary"> <span className="progress-badge">{data.name}</span>
+                          <div className="row float-right">
+                            <button className="btn btn-primary float-right float-top btn-sm" data-toggle="modal" data-target="#exampleModal"
+                              onClick={() => this.showEditModal(data.id)}>Edit </button>
+                              {/* <button className="btn btn-danger float-right float-top btn-sm" data-toggle="modal" data-target="#exampleModal"
+                              onClick={() => this.onClickDelete(i, data.id)}>Delete </button> */}
+                            <button type="button" onClick={() => this.onClickDelete(i, data.id)} className="close" aria-label="Close">
+                              <span aria-hidden="true">&times;</span> 
+                            </button>
+                          </div>
                           <div className="progress">
                             <div className="progress-bar progress-bar-primary" data-aos="progress-full"
                               data-aos-offset={10} data-aos-duration={2000} role="progressbar" aria-valuenow={60}
                               aria-valuemin={0} aria-valuemax={100} style={{ width: +data.proficiency + '%' }} />
                           </div>
-                          <span className="progress-value">{data.proficiency}%</span>
+                          <span className="progress-value float-center">{data.proficiency}%</span>
 
                         </div>
                         <Modal show={this.state.showEditModal}>
                           <Modal.Header closeButton onClick={() => this.hideEditModal()}>
-                            <Modal.Title>Edit Reference {data.id} </Modal.Title>
+                            <Modal.Title>Edit Skill </Modal.Title>
                           </Modal.Header>
                           <Modal.Body>
                             <div className="row">
@@ -132,7 +135,7 @@ class EditSkill extends Component {
                             <div className="row">
                               <div className="col-md-8 mb-3">
                                 <label >Proficiency</label>
-                                <textarea type="text" className="form-control"
+                                <input type="number" className="form-control"
                                   value={this.state.proficiency} onChange={(value) => this.setState({ proficiency: value.target.value })}
                                 />
                               </div>
@@ -171,7 +174,7 @@ class EditSkill extends Component {
             <div className="row">
               <div className="col-md-8 mb-3">
                 <label >Proficiency</label>
-                <textarea type="text" className="form-control" onChange={(value) => this.setState({ proficiency: value.target.value })}
+                <input type="number" className="form-control" onChange={(value) => this.setState({ proficiency: value.target.value })}
                 />
               </div>
             </div>

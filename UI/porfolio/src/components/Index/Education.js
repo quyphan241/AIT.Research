@@ -42,7 +42,7 @@ class Education extends Component {
                                             <div className="card-body">
                                                 <div className="h5">{data.major}</div>
                                                 <p className="category">{data.school}</p>
-                                                <p>{data.description}</p>
+                                                <p style={{whiteSpace: 'pre-line', textAlign: 'justify'}}>{data.description}</p>
                                             </div>
                                         </div>
                                     </div>

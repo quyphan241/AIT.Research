@@ -73,7 +73,6 @@ class EditRefer extends Component {
     }
 
     async onClickSave() {
-        console.log(this.state, "sdfuiyskfdjhskjd");
         const res = await referenceService.create(this.state);
         if (res) {
             window.location.replace("/edit");
@@ -91,7 +90,6 @@ class EditRefer extends Component {
             const list = this.state.listReference
             list.splice(i, 1)
             this.setState({ listReference: list })
-            window.location.replace("/edit");
         }
     }
 
@@ -99,7 +97,7 @@ class EditRefer extends Component {
         return (
             <div className="section" id="reference">
                 <div className="container cc-reference">
-                    <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
+                    <button className="btn btn-success float-right" data-toggle="modal" data-target="#exampleModal"
                         onClick={() => this.showCreateModal()}>Create </button>
                     <div className="h4 mb-4 text-center title">References</div>
                     {
@@ -128,13 +126,13 @@ class EditRefer extends Component {
                                     </div>
                                     <Modal show={this.state.showEditModal}>
                                         <Modal.Header closeButton onClick={() => this.hideEditModal()}>
-                                            <Modal.Title>Edit Reference {data.id} </Modal.Title>
+                                            <Modal.Title>Edit Reference </Modal.Title>
                                         </Modal.Header>
                                         <Modal.Body>
                                             <div className="row">
                                                 <div className="col-md-8 mb-3">
                                                     <label >Name</label>
-                                                    <input type="text" className="form-control"
+                                                    <input type="text" className="form-control" required
                                                         value={this.state.name} onChange={(value) => this.setState({ name: value.target.value })}
                                                     />
                                                 </div>
@@ -142,7 +140,7 @@ class EditRefer extends Component {
                                             <div className="row">
                                                 <div className="col-md-8 mb-3">
                                                     <label >Company</label>
-                                                    <input type="text" className="form-control"
+                                                    <input type="text" className="form-control" required
                                                         value={this.state.company} onChange={(value) => this.setState({ company: value.target.value })}
                                                     />
                                                 </div>
@@ -150,15 +148,15 @@ class EditRefer extends Component {
                                             <div className="row">
                                                 <div className="col-md-8 mb-3">
                                                     <label >Position</label>
-                                                    <input type="text" className="form-control"
+                                                    <input type="text" className="form-control" required
                                                         value={this.state.position} onChange={(value) => this.setState({ position: value.target.value })}
                                                     />
                                                 </div>
                                             </div>
                                             <div className="row">
                                                 <div className="col-md-8 mb-3">
-                                                    <label>Image</label>
-                                                    <input type="text" className="form-control"
+                                                    <label>Image</label> 
+                                                    <input type="text" className="form-control" required
                                                         value={this.state.image} onChange={(value) => this.setState({ image: value.target.value })}
                                                     />
                                                 </div>
@@ -167,7 +165,7 @@ class EditRefer extends Component {
                                             <div className="row">
                                                 <div className="col-md-8 mb-3">
                                                     <label >Description</label>
-                                                    <textarea type="text" className="form-control"
+                                                    <textarea type="text" className="form-control" required
                                                         value={this.state.description} onChange={(value) => this.setState({ description: value.target.value })}
                                                     />
                                                 </div>
@@ -189,7 +187,7 @@ class EditRefer extends Component {
                         })
                     }
                 </div>
-                <Modal show={this.state.showCreateModal}>
+                <Modal show={this.state.showCreateModal} size="md">
                     <Modal.Header closeButton onClick={() => this.hideCreateModal()}>
                         <Modal.Title>Create Experience </Modal.Title>
                     </Modal.Header>

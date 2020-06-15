@@ -1,6 +1,6 @@
 import axios from "axios";
-// const baseUrl = "http://192.168.144.122:8080/educations"
-const baseUrl = "http://localhost:8080/educations"
+const baseUrl = "http://192.168.144.122:8080/educations"
+// const baseUrl = "http://localhost:8080/educations"
 
 const education = {};
 
@@ -22,11 +22,11 @@ education.get = async (id) => {
 education.update = async (state, id) => {
   const urlPut = baseUrl+"/"+id
   const datapost = {
-    school: state.school,
     period: state.period,
     description: state.description,
     degree: state.degree,
-    major: state.major
+    major: state.major,
+    school: state.school
   }
 
 

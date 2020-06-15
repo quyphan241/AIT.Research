@@ -34,7 +34,8 @@ class EditProfile extends Component {
         address: res.address,
         email: res.email,
         phoneNumber: res.phoneNumber,
-        language: res.language
+        language: res.language, 
+        image: res.image
       })
     }
     else {
@@ -67,21 +68,22 @@ class EditProfile extends Component {
     return (
       <div className="section" id="about">
         <div className="container">
-        <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
-          onClick={() => this.showModal()}>Edit</button>
+          <button className="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"
+            onClick={() => this.showModal()}>Edit</button>
+          <div className="h4 text-center mb-4 title">Profile</div>
+
           <div className="card" data-aos="fade-up" data-aos-offset="10">
             <div className="row">
               <div className="col-lg-6 col-md-12">
                 <div className="card-body">
                   <div className="h4 mt-0 title">About</div>
-                  <p>{this.state.about}</p>
+                  <p style={{ whiteSpace: 'pre-line', textAlign: 'justify' }}>{this.state.about}</p>
                 </div>
-    
               </div>
               <div className="col-lg-6 col-md-12">
                 <div className="card-body">
                   <div className="h4 mt-0 title">Basic Information</div>
-                  
+
                   <div className="row mt-3">
                     <div className="col-sm-4"><strong className="text-uppercase">Name:</strong></div>
                     <div className="col-sm-8">{this.state.name}</div>
@@ -169,14 +171,22 @@ class EditProfile extends Component {
               </div>
             </div>
             <div className="row">
-              <div className="col-md-12 mb-3" >
+              <div className="col-md-6 mb-3" >
                 <label for="name">Address</label>
                 <input type="text" className="form-control"
                   value={this.state.address}
                   onChange={(value) => this.setState({ address: value.target.value })}
                 />
               </div>
+              <div className="col-md-6 mb-3" >
+                <label for="name">Image</label>
+                <input type="text" className="form-control"
+                  value={this.state.image}
+                  onChange={(value) => this.setState({ image: value.target.value })}
+                />
+              </div>
             </div>
+         
             <div className="row">
               <div className="col-md-12 mb-3" >
                 <label for="name">About</label>
@@ -198,7 +208,7 @@ class EditProfile extends Component {
           </Modal.Footer>
         </Modal>
       </div>
-     
+
     );
   }
 }

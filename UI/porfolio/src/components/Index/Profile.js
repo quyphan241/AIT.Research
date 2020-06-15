@@ -7,18 +7,19 @@ class Profile extends Component {
     super()
     this.state = {
       fieldName: "",
-      fieldCareer: ""
+      fieldCareer: "",
+      image: ""
     }
   }
 
   async componentDidMount() {
     console.log("Mounted Edit");
     const res = await profileService.list()
-    console.log(res);
     if (res) {
       this.setState({
         fieldName: res.name,
-        fieldCareer: res.career
+        fieldCareer: res.career,
+        image: res.image
       })
     }
     else {
@@ -27,13 +28,14 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.state.image,"sdfjskj")
     return (
       <div className="wrapper">
         <div className="page-header page-header-small" filter-color="green">
           <div className="page-header-image" data-parallax="true" style={{ backgroundImage: "url('images/cc-bg-1.jpg')" }}></div>
           <div className="container">
             <div className="content-center">
-              <div className="cc-profile-image"><img src="images/quyphan.jpg" alt="dmfgbm" /></div>
+              <div className="cc-profile-image"><img src={this.state.image} alt="Profile" /></div>
               <div className="h2 title">{this.state.fieldName}</div>
               <div>
                 <p className="category text-white">{this.state.fieldCareer}</p>

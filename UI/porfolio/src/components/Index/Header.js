@@ -56,13 +56,10 @@ class Header extends Component {
                       Contact
                     </a>
                   </li>
-                  <li className="nav-item">
-                
+                  <li className="nav-item" >
                   <Link className="nav-link smooth-scroll" to="/edit">Edit</Link>
-
                   </li>
                 </ul>
-
               </div>
             </div>
           </nav>

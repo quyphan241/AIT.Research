@@ -16,6 +16,7 @@ public class Information {
     private String language;
     private String phoneNumber;
     private Integer age;
+    private String image;
 
     private boolean isDeleted=false;
 
@@ -101,5 +102,13 @@ public class Information {
 
     public void setDeleted(boolean deleted) {
         isDeleted = deleted;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

@@ -33,16 +33,6 @@ public class InformationeRestController {
 
     @PutMapping("/informations/{id}")
     public Information updateInformation(@PathVariable Long id, @RequestBody Information newInformation) {
-//        Optional<Information> informationNew = informationRepository.findById(id);
-//        informationNew.get().setAbout(information.getAbout());
-//        informationNew.get().setName(information.getName());
-//        informationNew.get().setAge(information.getAge());
-//        informationNew.get().setPhoneNumber(information.getPhoneNumber());
-//        informationNew.get().setEmail(information.getEmail());
-//        informationNew.get().setAddress(information.getAddress());
-//        informationNew.get().setCareer(information.getCareer());
-//        informationRepository.save(information);
-//        return informationNew;
         return informationRepository.findById(id)
                 .map(information -> {
                     information.setName(newInformation.getName());
@@ -52,6 +42,7 @@ public class InformationeRestController {
                     information.setEmail(newInformation.getEmail());
                     information.setAddress(newInformation.getAddress());
                     information.setCareer(newInformation.getCareer());
+                    information.setImage(newInformation.getImage());
                     return informationRepository.save(information);
                 })
                 .orElseGet(() -> {
